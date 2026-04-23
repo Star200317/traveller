@@ -1,0 +1,99 @@
+spring:
+  application:
+    name: ai-travel-guide
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ai_travel?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql223
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      database: 0
+      timeout: 3s
+      connect-timeout: 3s
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+        shutdown-timeout: 100ms
+
+  ai:
+    dashscope:
+      api-key: sk-f035594d830d42e7a4d7299d195947c6
+      chat:
+        options:
+          model: qwen-max
+          temperature: 0.7
+          max-tokens: 4096
+      embedding:
+        options:
+          model: text-embedding-v3
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# MyBatis Plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  type-aliases-package: com.travel.entity
+  global-config:
+    db-config:
+      id-type: assign_id
+  configuration:
+    map-underscore-to-camel-case: true
+
+# Sa-Token
+sa-token:
+  token-name: Authorization
+  timeout: 2592000       # token有效期30天
+  active-timeout: -1
+  is-concurrent: true
+  is-share: false
+
+# Pinecone
+pinecone:
+  api-key: pcsk_59DDur_7DP9FFKTPiUTmnMvLbTvhvmsmyPYGNJVHBtUVQEdnjZKEmR9NgV8PUBfTNGFAQC
+  index-name: travel-guide
+  namespace:
+    attractions: attractions     # 景点知识库
+    cities: cities               # 城市知识库
+    tips: travel-tips            # 旅行常识库
+    user-prefix: user-           # 用户私有库前缀（user-{userId}）
+
+# Serper 联网搜索
+serper:
+  api-key: be1c8bb7b3f6d09a0c76e0a1a3c193baaa139674
+  base-url: https://google.serper.dev
+  max-results: 5
+
+# 高德地图
+amap:
+  web-key: 86273e71807139c717a2c650f15c792b        # Web服务Key（后端用）
+  js-key: 051b40dc66f3b5e522738f026a027916            # JS API Key（前端用，返给前端）
+  security-code: 54d316817ddf5ef76c99e390189f3b52
+
+# 对话上下文
+chat:
+  context:
+    max-rounds: 20      # 滑动窗口最大轮次
+    ttl-seconds: 7200   # 上下文TTL 2小时
+
+# 文件存储
+file:
+  storage-path: ./uploads
+  pdf-path: ./exports/pdf
+
+# 跨域
+cors:
+  allowed-origins: http://localhost:5173
