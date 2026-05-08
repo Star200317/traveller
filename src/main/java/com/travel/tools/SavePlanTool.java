@@ -45,15 +45,19 @@ public class SavePlanTool {
             plan.setDays(days);
             plan.setPeopleCount(peopleCount != null ? peopleCount : 1);
             plan.setBudget(budget != null ? BigDecimal.valueOf(budget) : null);
+            
+            // 清洗JSON字符串：移除非法转义字符
+            String cleanedJson = cleanJsonString(planContentJson);
+            
             // 支持两种格式：数组 [{day, activities}] 或对象 {days: [...]}
             Map<String, Object> contentMap = new HashMap<>();
-            if (planContentJson.trim().startsWith("[")) {
+            if (cleanedJson.trim().startsWith("[")) {
                 // 数组格式，包装到 days 字段
-                List<?> dayList = objectMapper.readValue(planContentJson, List.class);
+                List<?> dayList = objectMapper.readValue(cleanedJson, List.class);
                 contentMap.put("days", dayList);
             } else {
                 // 对象格式
-                contentMap = objectMapper.readValue(planContentJson, Map.class);
+                contentMap = objectMapper.readValue(cleanedJson, Map.class);
             }
             plan.setPlanContent(contentMap);
             plan.setStatus(1); // 草稿状态
@@ -66,5 +70,26 @@ public class SavePlanTool {
             log.error("[SavePlan] 保存失败", e);
             return "保存失败：" + e.getMessage();
         }
+    }
+    
+    /**
+     * 清洗JSON字符串，移除非法转义字符
+     */
+    private String cleanJsonString(String json) {
+        if (json == null) {
+            return null;
+        }
+        // 1. 移除反斜杠后跟空格的非法转义: \ 
+        json = json.replace("\\ ", " ");
+        // 2. 移除反斜杠后跟换行的非法转义
+        json = json.replace("\\\n", " ");
+        json = json.replace("\\\r", " ");
+        // 3. 移除反斜杠在字符串末尾的情况（如 "...\ " 或 "...\\"）
+        json = json.replaceAll("(\"[^\"]*)\\\\\\s*\"", "$1\"");
+        // 4. 移除单独的反斜杠（不在有效转义序列中的）
+        json = json.replaceAll("(?<!\\\\)\\\\(?!\"|/|b|f|n|r|t|u[0-9a-fA-F]{4})", "");
+        // 5. 替换多个连续反斜杠为单个
+        json = json.replaceAll("\\\\{2,}", "\\\\");
+        return json;
     }
 }

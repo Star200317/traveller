@@ -67,7 +67,10 @@ public class ChatService {
                 ]
               }
             ]
-            注意：每个activity必须包含latitude和longitude经纬度字段，这是地图显示的必要数据！
+            重要约束：
+            1. 每个activity必须包含latitude和longitude经纬度字段
+            2. description字段禁止使用反斜杠(\\)字符，禁止使用换行符，所有描述必须在一行内完成
+            3. description字段不要以反斜杠结尾，避免JSON解析错误
             
             对话规则：
             - 始终主动询问用户遗漏的关键信息（出行日期/天数/预算/人数/偏好）
