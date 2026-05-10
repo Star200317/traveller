@@ -61,11 +61,11 @@ public class ChatController {
     }
 
     /**
-     * 删除会话
+     * 删除会话（逻辑删除）
      */
     @DeleteMapping("/conversation/{conversationId}")
     public Result<Void> deleteConversation(@PathVariable Long conversationId) {
-        conversationService.removeById(conversationId);
+        conversationService.deleteConversation(conversationId);
         return Result.success();
     }
 }

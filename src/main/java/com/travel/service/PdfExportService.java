@@ -139,7 +139,33 @@ public class PdfExportService {
                         }
                     }
 
-                    // 住宿信息
+                    // 酒店信息
+                    @SuppressWarnings("unchecked")
+                    Map<String, Object> hotel = (Map<String, Object>) day.get("hotel");
+                    if (hotel != null) {
+                        String hotelName = (String) hotel.getOrDefault("name", "");
+                        String hotelPrice = (String) hotel.getOrDefault("price", "");
+                        String hotelAddress = (String) hotel.getOrDefault("address", "");
+                        
+                        Paragraph hotelPara = new Paragraph()
+                                .add("  酒店：")
+                                .add(hotelName)
+                                .setFont(boldFont)
+                                .setFontSize(11)
+                                .setFontColor(ColorConstants.DARK_GRAY);
+                        doc.add(hotelPara);
+                        
+                        if (!hotelPrice.isEmpty()) {
+                            doc.add(new Paragraph("       价格：" + hotelPrice)
+                                    .setFont(font).setFontSize(10).setFontColor(ColorConstants.GRAY));
+                        }
+                        if (!hotelAddress.isEmpty()) {
+                            doc.add(new Paragraph("       地址：" + hotelAddress)
+                                    .setFont(font).setFontSize(10).setFontColor(ColorConstants.GRAY));
+                        }
+                    }
+                    
+                    // 兼容旧数据的住宿字段
                     if (day.containsKey("accommodation")) {
                         doc.add(new Paragraph("  住宿：" + day.get("accommodation")).setFont(font).setFontSize(11));
                     }

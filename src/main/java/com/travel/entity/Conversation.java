@@ -15,7 +15,7 @@ public class Conversation {
     private String title;
     private Integer status;
 
-    @TableLogic
+    // 逻辑删除字段：0=未删除，1=已删除（由应用层控制，不用MP注解，避免与全局配置冲突）
     private Integer deleted;
 
     @TableField(fill = FieldFill.INSERT)

@@ -24,17 +24,37 @@ public class TravelPlanController {
     @GetMapping("/list")
     public Result<List<TravelPlan>> list() {
         Long userId = StpUtil.getLoginIdAsLong();
-        return Result.success(travelPlanService.lambdaQuery().eq(TravelPlan::getUserId, userId).list());
+        // 按创建时间倒序，过滤已删除，确保最新计划在前
+        return Result.success(travelPlanService.lambdaQuery()
+            .eq(TravelPlan::getUserId, userId)
+            .eq(TravelPlan::getDeleted, 0)
+            .orderByDesc(TravelPlan::getCreateTime)
+            .list());
+    }
+
+    /**
+     * 通过对话ID查询关联的计划（地图页跳转用）
+     */
+    @GetMapping("/byConv/{convId}")
+    public Result<TravelPlan> getByConvId(@PathVariable Long convId) {
+        TravelPlan plan = travelPlanService.lambdaQuery()
+            .eq(TravelPlan::getConversationId, convId)
+            .one();
+        return Result.success(plan);
     }
 
     @GetMapping("/{planId}")
     public Result<TravelPlan> detail(@PathVariable Long planId) {
-        return Result.success(travelPlanService.getById(planId));
+        TravelPlan plan = travelPlanService.getById(planId);
+        if (plan != null) {
+            System.out.println("[PlanController] 查询planId=" + planId + ", mapData=" + (plan.getMapData() != null ? "存在" : "null"));
+        }
+        return Result.success(plan);
     }
 
     @DeleteMapping("/{planId}")
     public Result<Void> delete(@PathVariable Long planId) {
-        travelPlanService.removeById(planId);
+        travelPlanService.deletePlan(planId);
         return Result.success();
     }
 

@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 工具1：联网搜索（Serper API）
@@ -30,14 +33,25 @@ public class WebSearchTool {
     @Value("${serper.max-results:5}")
     private int maxResults;
 
-    private final OkHttpClient httpClient = new OkHttpClient();
+    private final OkHttpClient httpClient = new OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .protocols(List.of(Protocol.HTTP_1_1))
+            .build();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Tool(description = "联网搜索最新旅游信息，包括景点详情、交通、住宿、天气、门票价格等实时信息")
     public String webSearch(
             @ToolParam(description = "搜索关键词，如'北京故宫门票价格2024'") String query) {
         try {
-            String json = String.format("{\"q\":\"%s\",\"num\":%d,\"hl\":\"zh-cn\"}", query, maxResults);
+            // 用 ObjectMapper 安全构建 JSON，避免特殊字符导致格式错误
+            Map<String, Object> requestMap = new HashMap<>();
+            requestMap.put("q", query);
+            requestMap.put("num", maxResults);
+            requestMap.put("hl", "zh-cn");
+            String json = objectMapper.writeValueAsString(requestMap);
+
             RequestBody body = RequestBody.create(json, MediaType.parse("application/json"));
             Request request = new Request.Builder()
                     .url(baseUrl + "/search")
@@ -59,6 +73,9 @@ public class WebSearchTool {
                                 item.has("snippet") ? item.get("snippet").asText() : "",
                                 item.get("link").asText()));
                     }
+                }
+                if (results.isEmpty()) {
+                    return "搜索无结果，请尝试更换关键词。";
                 }
                 return String.join("\n\n---\n\n", results);
             }

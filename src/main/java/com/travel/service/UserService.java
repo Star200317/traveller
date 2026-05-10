@@ -9,15 +9,20 @@ import com.travel.dto.RegisterRequest;
 import com.travel.dto.LoginResponse;
 import cn.dev33.satoken.stp.StpUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService extends ServiceImpl<UserMapper, User> {
 
     private final BCryptPasswordEncoder passwordEncoder;
+    private final VerifyCodeService verifyCodeService;
 
     public LoginResponse register(RegisterRequest req) {
         // 检查用户名是否重复
@@ -65,5 +70,51 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         resp.setNickname(user.getNickname());
         resp.setAvatar(user.getAvatar());
         return resp;
+    }
+
+    /**
+     * 发送验证码
+     */
+    public String sendVerifyCode(String username) {
+        // 检查用户是否存在
+        User user = getOne(new LambdaQueryWrapper<User>()
+                .eq(User::getUsername, username)
+                .eq(User::getStatus, 1));
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+
+        // 生成验证码
+        String code = verifyCodeService.generateCode(username);
+
+        // TODO: 实际项目中，这里应该发送邮件或短信
+        // 当前模拟实现：返回验证码（开发测试用）
+        log.info("[UserService] 验证码已生成（开发模式），username={}, code={}", username, code);
+
+        return code;
+    }
+
+    /**
+     * 重置密码
+     */
+    public void resetPassword(String username, String code, String newPassword) {
+        // 验证验证码
+        if (!verifyCodeService.verifyCode(username, code)) {
+            throw new RuntimeException("验证码错误或已过期");
+        }
+
+        // 获取用户
+        User user = getOne(new LambdaQueryWrapper<User>()
+                .eq(User::getUsername, username)
+                .eq(User::getStatus, 1));
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+
+        // 更新密码
+        user.setPassword(passwordEncoder.encode(newPassword));
+        updateById(user);
+
+        log.info("[UserService] 密码重置成功，username={}", username);
     }
 }

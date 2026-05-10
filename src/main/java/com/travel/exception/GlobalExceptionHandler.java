@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
         log.error("[RuntimeException]", e);
         // 如果是SSE请求，返回文本格式
         if (isSseRequest(request)) {
-            return "data: {\"error\": \" + escapeJson(e.getMessage()) + \"\"}\n\n";
+            return "data: {\"error\": \"" + escapeJson(e.getMessage()) + "\"}\n\n";
         }
         return Result.fail(e.getMessage());
     }

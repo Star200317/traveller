@@ -20,7 +20,7 @@ public class WebScrapeTool {
         try {
             Document doc = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
-                    .timeout(10000)
+                    .timeout(60000)
                     .get();
             // 去除脚本和样式，只取正文
             doc.select("script, style, nav, footer, header, .ad").remove();

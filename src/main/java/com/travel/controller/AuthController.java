@@ -37,4 +37,23 @@ public class AuthController {
         user.setPassword(null);
         return Result.success(user);
     }
+
+    /**
+     * 发送验证码（忘记密码用）
+     */
+    @PostMapping("/send-code")
+    public Result<Void> sendCode(@Valid @RequestBody SendCodeRequest req) {
+        String code = userService.sendVerifyCode(req.getUsername());
+        // 开发模式下返回验证码，生产环境应发送邮件/短信
+        return Result.success(null);
+    }
+
+    /**
+     * 重置密码
+     */
+    @PostMapping("/reset-password")
+    public Result<Void> resetPassword(@Valid @RequestBody ResetPasswordRequest req) {
+        userService.resetPassword(req.getUsername(), req.getCode(), req.getNewPassword());
+        return Result.success(null);
+    }
 }

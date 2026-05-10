@@ -1,6 +1,7 @@
 package com.travel.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.travel.entity.Conversation;
 import com.travel.entity.Message;
@@ -31,10 +32,11 @@ public class ConversationService extends ServiceImpl<ConversationMapper, Convers
         return conv;
     }
 
-    /** 获取用户会话列表 */
+    /** 获取用户会话列表（过滤已删除） */
     public List<Conversation> listByUser(Long userId) {
         return list(new LambdaQueryWrapper<Conversation>()
                 .eq(Conversation::getUserId, userId)
+                .eq(Conversation::getDeleted, 0)
                 .orderByDesc(Conversation::getUpdateTime));
     }
 
@@ -57,6 +59,20 @@ public class ConversationService extends ServiceImpl<ConversationMapper, Convers
         updateById(conv);
 
         return msg;
+    }
+
+    /**
+     * 逻辑删除会话（不物理删除）
+     * 使用 UpdateWrapper 裸写 UPDATE，完全绕过 MyBatis-Plus 逻辑删除拦截，
+     * 确保 deleted 字段一定被更新为 1
+     */
+    public boolean deleteConversation(Long conversationId) {
+        UpdateWrapper<Conversation> uw = new UpdateWrapper<>();
+        uw.eq("id", conversationId);
+        uw.set("deleted", 1);
+        int rows = baseMapper.update(null, uw);
+        log.info("[Conversation] 逻辑删除 conversationId={}, 影响行数={}", conversationId, rows);
+        return rows > 0;
     }
 
     /** 获取最近N轮上下文（滑动窗口） */
