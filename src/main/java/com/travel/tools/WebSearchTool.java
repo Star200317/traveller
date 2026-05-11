@@ -81,7 +81,7 @@ public class WebSearchTool {
             }
         } catch (Exception e) {
             log.error("[WebSearch] 搜索失败: {}", query, e);
-            return "搜索失败：" + e.getMessage();
+            return "【搜索暂时不可用】当前网络无法访问搜索服务。建议：1) 请稍后再试；2) 可尝试使用知识库查询（ragQuery），或更换关键词重试。";
         }
     }
 }

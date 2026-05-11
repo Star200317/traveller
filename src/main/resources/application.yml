@@ -35,13 +35,15 @@ spring:
           temperature: 0.7
           max-tokens: 8192
       embedding:
+        model: text-embedding-v3
+        dimension: 1024
         options:
-          model: text-embedding-v3
+          encoding-format: float
+          output-dimension: 1024
 
 server:
   port: 8080
-  servlet:
-    context-path: /api
+  # servlet.context-path 已移除，由 Controller 自行管理 /api 前缀
 
 # MyBatis Plus
 mybatis-plus:
@@ -56,12 +58,15 @@ mybatis-plus:
       # logic-not-delete-value: 0
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 改用 SLF4J 输出日志（可由日志框架控制级别，避免长参数刷屏）
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 
 # 日志
 logging:
   level:
-    com.baomidou.mybatisplus: DEBUG
+    # MyBatis 设为 INFO，避免 DEBUG 级别打印超长 SQL 参数（如 mapData JSON）
+    com.baomidou.mybatisplus: INFO
+    root: INFO
     com.travel: DEBUG
 
 # Sa-Token
@@ -74,12 +79,14 @@ sa-token:
 
 # Pinecone
 pinecone:
-  api-key: pcsk_59DDur_7DP9FFKTPiUTmnMvLbTvhvmsmyPYGNJVHBtUVQEdnjZKEmR9NgV8PUBfTNGFAQC
+  api-key: pcsk_6i9DoL_FqLTC38YixB1uSPJNiCYToP2wZqfuLePme5e4QYM46vQHWBJpaZmQgdvbCHpYzK
   index-name: travel-guide
   namespace:
     attractions: attractions     # 景点知识库
     cities: cities               # 城市知识库
     tips: travel-tips            # 旅行常识库
+    hotels: hotels               # 酒店知识库
+    food: food                   # 美食知识库
     user-prefix: user-           # 用户私有库前缀（user-{userId}）
 
 # Serper 联网搜索
@@ -104,6 +111,12 @@ chat:
 file:
   storage-path: ./uploads
   pdf-path: ./exports/pdf
+
+# 知识库（Markdown格式，启动时自动扫描向量化入库）
+knowledge-base:
+  md-path: D:/Star/ai-travel-guide/知识库   # Markdown知识库目录
+  auto-index-on-startup: true   # 启动时自动扫描入库
+  reindex-if-exists: true        # 重建索引后强制重新向量化
 
 # 跨域
 cors:

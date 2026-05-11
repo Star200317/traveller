@@ -1,0 +1,995 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.travel:ai-travel-guide >---------------------
+[INFO] Building ai-travel-guide 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:3.2.5:run (default-cli) > test-compile @ ai-travel-guide >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ ai-travel-guide ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ ai-travel-guide ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ ai-travel-guide ---
+[INFO] skip non existing resourceDirectory D:\Star\ai-travel-guide\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:testCompile (default-testCompile) @ ai-travel-guide ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:3.2.5:run (default-cli) < test-compile @ ai-travel-guide <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:3.2.5:run (default-cli) @ ai-travel-guide ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-05-11T18:17:36.161+08:00  INFO 19232 --- [ai-travel-guide] [           main] com.travel.AiTravelGuideApplication      : Starting AiTravelGuideApplication using Java 22.0.1 with PID 19232 (D:\Star\ai-travel-guide\target\classes started by 86134 in D:\Star\ai-travel-guide)
+2026-05-11T18:17:36.162+08:00 DEBUG 19232 --- [ai-travel-guide] [           main] com.travel.AiTravelGuideApplication      : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-05-11T18:17:36.164+08:00  INFO 19232 --- [ai-travel-guide] [           main] com.travel.AiTravelGuideApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-05-11T18:17:37.524+08:00  INFO 19232 --- [ai-travel-guide] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-05-11T18:17:37.538+08:00  INFO 19232 --- [ai-travel-guide] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-11T18:17:37.538+08:00  INFO 19232 --- [ai-travel-guide] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-05-11T18:17:37.601+08:00  INFO 19232 --- [ai-travel-guide] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-05-11T18:17:37.602+08:00  INFO 19232 --- [ai-travel-guide] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1397 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2026-05-11T18:17:38.008+08:00 DEBUG 19232 --- [ai-travel-guide] [           main] c.b.m.e.s.MybatisSqlSessionFactoryBean   : Property 'mapperLocations' was not specified.
+Initialization Sequence datacenterId:26 workerId:5
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.5.5 
+____ ____    ___ ____ _  _ ____ _  _ 
+[__  |__| __  |  |  | |_/  |___ |\ | 
+___] |  |     |  |__| | \_ |___ | \| 
+https://sa-token.cc (v1.39.0)
+2026-05-11T18:17:39.003+08:00  INFO 19232 --- [ai-travel-guide] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2026-05-11T18:17:39.009+08:00  INFO 19232 --- [ai-travel-guide] [           main] com.travel.AiTravelGuideApplication      : Started AiTravelGuideApplication in 3.3 seconds (process running for 3.702)
+2026-05-11T18:17:39.012+08:00 DEBUG 19232 --- [ai-travel-guide] [           main] c.b.m.a.DdlApplicationRunner             :   ...  DDL start create  ...  
+2026-05-11T18:17:39.013+08:00 DEBUG 19232 --- [ai-travel-guide] [           main] c.b.m.a.DdlApplicationRunner             :   ...  DDL end create  ...  
+2026-05-11T18:17:39.015+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] starting scan: D:/Star/ai-travel-guide/国内旅游攻略pdf
+2026-05-11T18:17:39.015+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] starting scan: D:/Star/ai-travel-guide/知识库
+2026-05-11T18:17:39.017+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 云南地区
+2026-05-11T18:17:39.018+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] found 28 .md files
+Creating a new SqlSession
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c89dfdd] was not registered for synchronization because synchronization is not active
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65c2c2f1] was not registered for synchronization because synchronization is not active
+2026-05-11T18:17:39.084+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-11T18:17:39.358+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22f84e3e
+2026-05-11T18:17:39.360+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@724459750 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+JDBC Connection [HikariProxyConnection@1278325710 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��������.pdf(String), 0(Integer)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65c2c2f1]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c89dfdd]
+2026-05-11T18:17:39.437+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-丽江攻略.pdf (7.9 MB)
+2026-05-11T18:17:39.437+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-三亚.md (11.0 KB)
+2026-05-11T18:17:39.948+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:40.051+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:40.357+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:43.371+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-三亚.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:17:43.371+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-丽江攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68471d6e] was not registered for synchronization because synchronization is not active
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4572e54d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1837816495 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+JDBC Connection [HikariProxyConnection@2077785504 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�Ϻ�.md(String), 0(Integer)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68471d6e]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4572e54d]
+2026-05-11T18:17:43.378+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-上海.md (11.9 KB)
+2026-05-11T18:17:43.379+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-云南.pdf (14.5 MB)
+2026-05-11T18:17:43.522+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:43.706+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:43.977+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:44.271+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-上海.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79cb6a9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1996740831 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79cb6a9]
+2026-05-11T18:17:44.281+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-北京.md (19.9 KB)
+2026-05-11T18:17:44.544+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:44.642+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-云南.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7edb65e6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@934917105 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7edb65e6]
+2026-05-11T18:17:44.650+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-大理.pdf (6.2 MB)
+2026-05-11T18:17:44.796+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:44.937+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:45.594+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-北京.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6069f15c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1289743997 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�Ͼ�.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6069f15c]
+2026-05-11T18:17:45.604+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-南京.md (12.1 KB)
+2026-05-11T18:17:45.836+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-大理.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:17:45.836+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@167786e9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1731141200 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@167786e9]
+2026-05-11T18:17:45.843+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-昆明.pdf (9.7 MB)
+2026-05-11T18:17:46.028+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:46.317+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:47.015+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-昆明.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@39edc133] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@333052219 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@39edc133]
+2026-05-11T18:17:47.022+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-束河.pdf (9.5 MB)
+2026-05-11T18:17:47.052+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-南京.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c2ad043] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@819503225 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c2ad043]
+2026-05-11T18:17:47.057+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-厦门.md (11.2 KB)
+2026-05-11T18:17:47.129+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:47.304+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:47.414+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:47.917+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-厦门.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3702b18a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@830600383 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�Ϸ�.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3702b18a]
+2026-05-11T18:17:47.926+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-合肥.md (11.1 KB)
+2026-05-11T18:17:48.094+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:48.594+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-束河.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43db49a5] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1085725840 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43db49a5]
+2026-05-11T18:17:48.603+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-泸沽湖.pdf (7.8 MB)
+2026-05-11T18:17:48.740+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:49.023+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:49.546+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-合肥.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47057c2] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1253638967 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-���ͺ���.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47057c2]
+2026-05-11T18:17:49.551+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-呼和浩特.md (12.1 KB)
+2026-05-11T18:17:49.732+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:50.039+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-泸沽湖.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@12cec410] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1761266048 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��˫����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@12cec410]
+2026-05-11T18:17:50.046+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-西双版纳.pdf (13.8 MB)
+2026-05-11T18:17:50.186+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:50.329+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:50.624+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-呼和浩特.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@fddaff9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1097877323 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-��ͬ.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@fddaff9]
+2026-05-11T18:17:50.630+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-大同.md (11.8 KB)
+2026-05-11T18:17:50.755+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:50.957+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-西双版纳.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@316f2c0a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2102694479 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@316f2c0a]
+2026-05-11T18:17:50.962+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-香格里拉.pdf (10.7 MB)
+2026-05-11T18:17:51.082+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:51.364+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:51.499+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-大同.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@227442f7] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@912082876 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-���.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@227442f7]
+2026-05-11T18:17:51.507+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-天津.md (14.5 KB)
+2026-05-11T18:17:51.654+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:52.266+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-香格里拉.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a0197b2] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@582066838 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������9��.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a0197b2]
+2026-05-11T18:17:52.270+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-香格里拉9日.pdf (6.9 MB)
+2026-05-11T18:17:52.437+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:52.598+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:52.820+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-天津.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e09f6f6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@647273242 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-̫ԭ.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e09f6f6]
+2026-05-11T18:17:52.825+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-太原.md (12.1 KB)
+2026-05-11T18:17:53.137+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:53.199+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-香格里拉9日.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:17:53.200+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 华北地区
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@78b49396] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1935039682 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��̨ɽ.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@78b49396]
+2026-05-11T18:17:53.205+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-五台山.pdf (17.0 MB)
+2026-05-11T18:17:53.318+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:53.579+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:54.475+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-五台山.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d6167a0] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2043041842 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6d6167a0]
+2026-05-11T18:17:54.479+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-北京.pdf (25.4 MB)
+2026-05-11T18:17:54.618+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-太原.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@794032d6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@717408932 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@794032d6]
+2026-05-11T18:17:54.622+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-宁波.md (11.2 KB)
+2026-05-11T18:17:54.645+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:54.862+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:54.892+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:55.496+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-北京.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@421b7d5c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2016860092 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-���ױ���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@421b7d5c]
+2026-05-11T18:17:55.500+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-呼伦贝尔.pdf (22.5 MB)
+2026-05-11T18:17:55.655+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:55.784+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:56.345+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-宁波.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50f96547] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@841700530 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50f96547]
+2026-05-11T18:17:56.354+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-广州.md (11.2 KB)
+2026-05-11T18:17:56.551+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-呼伦贝尔.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28cfbbb6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1072843959 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��ͬ.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28cfbbb6]
+2026-05-11T18:17:56.558+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-大同.pdf (16.9 MB)
+2026-05-11T18:17:56.602+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:56.670+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:56.833+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:58.054+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-广州.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+2026-05-11T18:17:58.055+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-大同.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b979bb0] was not registered for synchronization because synchronization is not active
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7cbb8345] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1376569273 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+JDBC Connection [HikariProxyConnection@470095080 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�żҿ�.md(String), 0(Integer)
+==> Parameters: ����¿��-���.pdf(String), 0(Integer)
+<==      Total: 0
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7cbb8345]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b979bb0]
+2026-05-11T18:17:58.061+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-天津.pdf (9.4 MB)
+2026-05-11T18:17:58.061+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-张家口.md (11.7 KB)
+2026-05-11T18:17:58.190+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:58.221+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:58.318+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:58.853+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-张家口.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e6b59fa] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2035807923 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e6b59fa]
+2026-05-11T18:17:58.860+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-扬州.md (11.8 KB)
+2026-05-11T18:17:59.112+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:17:59.212+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-天津.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48861059] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@819400591 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-̫ԭ.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48861059]
+2026-05-11T18:17:59.221+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-太原.pdf (17.0 MB)
+2026-05-11T18:17:59.333+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:17:59.454+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:00.155+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-扬州.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@36e3a252] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1497971573 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�е�.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@36e3a252]
+2026-05-11T18:18:00.162+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-承德.md (11.4 KB)
+2026-05-11T18:18:00.275+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-太原.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c3d4bde] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@715211296 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�ʹ�.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c3d4bde]
+2026-05-11T18:18:00.281+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-故宫.pdf (15.4 MB)
+2026-05-11T18:18:00.319+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:00.415+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:00.540+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:00.953+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-承德.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77bb1128] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@980723869 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77bb1128]
+2026-05-11T18:18:00.962+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-无锡.md (11.7 KB)
+2026-05-11T18:18:01.076+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:01.624+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-故宫.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:18:01.625+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 华南地区
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@17bc0b40] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@521722112 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@17bc0b40]
+2026-05-11T18:18:01.631+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-三亚旅游攻略.pdf (11.2 MB)
+2026-05-11T18:18:01.826+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:02.040+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-无锡.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77b6934c] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@51550614 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77b6934c]
+2026-05-11T18:18:02.049+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-杭州.md (11.4 KB)
+2026-05-11T18:18:02.089+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:02.184+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:03.198+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-三亚旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5454ba54] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1396150810 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5454ba54]
+2026-05-11T18:18:03.204+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-北海旅游攻略.pdf (15.2 MB)
+2026-05-11T18:18:03.233+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-杭州.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@13b1c738] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@480387460 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-Ȫ��.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@13b1c738]
+2026-05-11T18:18:03.236+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-泉州.md (11.3 KB)
+2026-05-11T18:18:03.332+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:03.524+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:03.575+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:04.247+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-泉州.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@31fcf764] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1800733249 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@31fcf764]
+2026-05-11T18:18:04.255+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-济南.md (10.3 KB)
+2026-05-11T18:18:04.474+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:04.533+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-北海旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ae223ef] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@26919826 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1ae223ef]
+2026-05-11T18:18:04.541+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-南宁旅游攻略.pdf (21.0 MB)
+2026-05-11T18:18:04.708+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:04.980+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:05.977+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-济南.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4fbc2da5] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@161919595 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4fbc2da5]
+2026-05-11T18:18:05.984+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-深圳.md (11.3 KB)
+2026-05-11T18:18:06.040+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-南宁旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@380e9bc8] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1704120873 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@380e9bc8]
+2026-05-11T18:18:06.044+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-广州旅游攻略.pdf (17.4 MB)
+2026-05-11T18:18:06.187+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:06.231+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:06.375+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:06.868+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-深圳.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4144cbe5] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@788674387 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-��̨.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4144cbe5]
+2026-05-11T18:18:06.875+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-烟台.md (11.2 KB)
+2026-05-11T18:18:07.001+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:08.646+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-广州旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75811b96] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@855076910 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75811b96]
+2026-05-11T18:18:08.652+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-广西旅游攻略.pdf (8.0 MB)
+2026-05-11T18:18:08.657+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-烟台.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26212bc5] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@74094491 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�麣.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@26212bc5]
+2026-05-11T18:18:08.661+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-珠海.md (10.9 KB)
+2026-05-11T18:18:08.804+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:08.812+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:09.097+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:09.536+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-珠海.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b30015] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1146914209 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49b30015]
+2026-05-11T18:18:09.542+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-福州.md (11.4 KB)
+2026-05-11T18:18:09.762+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-广西旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6aa7d6d4] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@397046768 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6aa7d6d4]
+2026-05-11T18:18:09.771+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-惠州旅游攻略.pdf (18.1 MB)
+2026-05-11T18:18:09.836+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:09.902+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:10.065+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:10.564+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-福州.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21e87b4d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@582474014 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�ػʵ�.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21e87b4d]
+2026-05-11T18:18:10.575+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-秦皇岛.md (11.9 KB)
+2026-05-11T18:18:10.730+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:10.779+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-惠州旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23a586a1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1635200513 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23a586a1]
+2026-05-11T18:18:10.788+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-桂林旅游攻略.pdf (6.4 MB)
+2026-05-11T18:18:10.937+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:11.202+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:11.735+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-秦皇岛.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1daafdb6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@240370666 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-��ɽ.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1daafdb6]
+2026-05-11T18:18:11.742+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-舟山.md (11.3 KB)
+2026-05-11T18:18:11.900+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:11.936+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-桂林旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21ae2cb9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@65295419 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����ɽ���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21ae2cb9]
+2026-05-11T18:18:11.942+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-武夷山旅游攻略.pdf (21.1 MB)
+2026-05-11T18:18:12.091+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:12.349+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:12.822+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-舟山.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37d876a1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@481174600 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-����.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37d876a1]
+2026-05-11T18:18:12.830+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-苏州.md (11.8 KB)
+2026-05-11T18:18:13.118+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:13.128+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-武夷山旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@317a9b8b] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1270503210 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@317a9b8b]
+2026-05-11T18:18:13.138+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-海口旅游攻略.pdf (7.7 MB)
+2026-05-11T18:18:13.245+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:13.427+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:14.029+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-苏州.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2743a52a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@967910072 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-�ൺ.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2743a52a]
+2026-05-11T18:18:14.034+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-青岛.md (11.3 KB)
+2026-05-11T18:18:14.162+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-海口旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1353378a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@392827698 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1353378a]
+2026-05-11T18:18:14.170+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-深圳旅游攻略.pdf (19.7 MB)
+2026-05-11T18:18:14.305+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:14.344+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:14.596+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:15.012+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-青岛.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f701db0] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@910404278 wrapping com.mysql.cj.jdbc.ConnectionImpl@22f84e3e] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����-��ɽ.md(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f701db0]
+2026-05-11T18:18:15.016+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] parsing: 旅游-黄山.md (11.4 KB)
+2026-05-11T18:18:15.172+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-2] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:15.235+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-深圳旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69633d17] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@22859622 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�麣���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69633d17]
+2026-05-11T18:18:15.237+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-珠海旅游攻略.pdf (7.6 MB)
+2026-05-11T18:18:15.342+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:15.620+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:15.824+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] FAIL: 旅游-黄山.md - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:18:15.824+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-2] c.t.c.MarkdownKnowledgeBaseInitializer   : [KB-MD] done: total=28 ok=0 skip=0 fail=28 ms=36808
+2026-05-11T18:18:16.759+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-珠海旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:18:16.760+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 山东地区
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@356e71fe] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1267028160 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@356e71fe]
+2026-05-11T18:18:16.763+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-威海旅游攻略.pdf (21.9 MB)
+2026-05-11T18:18:16.903+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:17.179+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:18.122+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-威海旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2097eafd] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1571453522 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2097eafd]
+2026-05-11T18:18:18.130+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-日照旅游攻略.pdf (14.4 MB)
+2026-05-11T18:18:18.246+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:18.516+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:19.502+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-日照旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a6e9d82] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@514954143 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a6e9d82]
+2026-05-11T18:18:19.509+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-曲阜旅游攻略.pdf (7.3 MB)
+2026-05-11T18:18:19.596+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:19.721+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:20.458+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-曲阜旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@133b51f7] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1045925339 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-̩ɽ���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@133b51f7]
+2026-05-11T18:18:20.466+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-泰山旅游攻略.pdf (7.4 MB)
+2026-05-11T18:18:20.610+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:20.867+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:21.670+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-泰山旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a04d951] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1139360812 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a04d951]
+2026-05-11T18:18:21.675+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-济南旅游攻略.pdf (17.5 MB)
+2026-05-11T18:18:21.807+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:22.074+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:23.350+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-济南旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@39694d35] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@500256711 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��̨���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@39694d35]
+2026-05-11T18:18:23.358+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-烟台旅游攻略.pdf (13.6 MB)
+2026-05-11T18:18:23.465+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:23.744+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:25.412+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-烟台旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49bf6847] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1758177380 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@49bf6847]
+2026-05-11T18:18:25.419+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-蓬莱旅游攻略.pdf (6.4 MB)
+2026-05-11T18:18:25.524+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:25.802+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:26.402+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-蓬莱旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4d6b670] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1547341118 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4d6b670]
+2026-05-11T18:18:26.410+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-长岛旅游攻略.pdf (15.7 MB)
+2026-05-11T18:18:26.513+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:26.644+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:27.301+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-长岛旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2933cdf4] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1237518315 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�ൺ���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2933cdf4]
+2026-05-11T18:18:27.310+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-青岛旅游攻略.pdf (7.8 MB)
+2026-05-11T18:18:27.452+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:27.582+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:28.437+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-青岛旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:18:28.438+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 浙江地区
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5380c874] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@263790722 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-������.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5380c874]
+2026-05-11T18:18:28.443+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-乌镇攻略.pdf (8.2 MB)
+2026-05-11T18:18:28.610+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:28.778+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:29.855+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-乌镇攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@210d3556] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@326986254 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-ǧ����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@210d3556]
+2026-05-11T18:18:29.862+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-千岛湖.pdf (7.8 MB)
+2026-05-11T18:18:29.979+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:30.245+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:30.858+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-千岛湖.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@953ddb4] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@102139502 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��������.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@953ddb4]
+2026-05-11T18:18:30.865+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-宁波攻略.pdf (8.5 MB)
+2026-05-11T18:18:30.997+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:31.139+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:32.144+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-宁波攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5659d057] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@588481977 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����ɽ.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5659d057]
+2026-05-11T18:18:32.151+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-普陀山.pdf (11.8 MB)
+2026-05-11T18:18:32.291+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:32.541+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:33.176+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-普陀山.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a9184d1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@566936564 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-���ݹ���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4a9184d1]
+2026-05-11T18:18:33.182+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-杭州攻略.pdf (8.1 MB)
+2026-05-11T18:18:33.346+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:33.499+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:34.612+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-杭州攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c5f9d7d] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@335227220 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��깥��.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c5f9d7d]
+2026-05-11T18:18:34.618+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-横店攻略.pdf (6.5 MB)
+2026-05-11T18:18:34.727+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:34.972+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:36.001+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-横店攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37b3f373] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@380221953 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�㽭����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37b3f373]
+2026-05-11T18:18:36.008+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-浙江攻略.pdf (15.5 MB)
+2026-05-11T18:18:36.291+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:36.458+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:37.223+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-浙江攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@232c187a] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1722341745 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@232c187a]
+2026-05-11T18:18:37.230+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-绍兴.pdf (17.1 MB)
+2026-05-11T18:18:37.357+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:37.598+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:38.542+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-绍兴.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@473e43ec] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2066865079 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��ɽ����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@473e43ec]
+2026-05-11T18:18:38.548+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-舟山攻略.pdf (11.6 MB)
+2026-05-11T18:18:38.690+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:38.841+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:39.830+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-舟山攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@55da22f9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@657038465 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@55da22f9]
+2026-05-11T18:18:39.839+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-西塘.pdf (11.5 MB)
+2026-05-11T18:18:39.971+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:40.122+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:41.346+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-西塘.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f795eb9] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@706635722 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��Ϫʪ�ع���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f795eb9]
+2026-05-11T18:18:41.353+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-西溪湿地攻略.pdf (9.0 MB)
+2026-05-11T18:18:41.455+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:41.632+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:42.417+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-西溪湿地攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d869d6] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@680231748 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�㵴ɽ����.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d869d6]
+2026-05-11T18:18:42.425+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-雁荡山攻略.pdf (8.0 MB)
+2026-05-11T18:18:42.503+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:42.746+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:43.431+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-雁荡山攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:18:43.433+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 西南地区
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9737100] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@373933421 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��üɽ���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9737100]
+2026-05-11T18:18:43.436+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-峨眉山旅游攻略.pdf (23.5 MB)
+2026-05-11T18:18:43.593+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:43.874+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:44.824+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-峨眉山旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@70a40ae] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@625874299 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@70a40ae]
+2026-05-11T18:18:44.830+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-川藏旅游攻略.pdf (34.6 MB)
+2026-05-11T18:18:45.063+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:45.338+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:47.012+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-川藏旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6dc072fe] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@287921628 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6dc072fe]
+2026-05-11T18:18:47.018+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-康定旅游攻略.pdf (15.4 MB)
+2026-05-11T18:18:47.109+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:47.378+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:48.516+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-康定旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@8e611f3] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2045584429 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@8e611f3]
+2026-05-11T18:18:48.522+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-拉萨旅游攻略.pdf (14.9 MB)
+2026-05-11T18:18:48.631+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:48.865+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:49.813+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-拉萨旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@353bf1fb] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@534673364 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��֥���ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@353bf1fb]
+2026-05-11T18:18:49.820+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-林芝旅游攻略.pdf (22.3 MB)
+2026-05-11T18:18:49.949+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:50.097+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:51.435+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-林芝旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c37212f] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1254989661 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-��ľ�����ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c37212f]
+2026-05-11T18:18:51.443+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-纳木错旅游攻略.pdf (13.3 MB)
+2026-05-11T18:18:51.548+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:51.695+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:52.952+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-纳木错旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22b2cd3f] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1600106701 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22b2cd3f]
+2026-05-11T18:18:52.959+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-西藏旅游攻略.pdf (33.2 MB)
+2026-05-11T18:18:53.177+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:53.317+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:54.120+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-西藏旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1855810] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1037597191 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1855810]
+2026-05-11T18:18:54.127+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-重庆旅游攻略.pdf (8.8 MB)
+2026-05-11T18:18:54.276+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:54.539+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:55.826+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-重庆旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b98918b] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1418843758 wrapping com.mysql.cj.jdbc.ConnectionImpl@77c36f0c] will not be managed by Spring
+==>  Preparing: SELECT id,user_id,category,title,content,file_name,file_size,pinecone_ids,status,deleted,create_time,update_time FROM knowledge_doc WHERE deleted=0 AND (file_name = ? AND deleted = ?)
+==> Parameters: ����¿��-ǭ�������ι���.pdf(String), 0(Integer)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4b98918b]
+2026-05-11T18:18:55.830+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] parsing: 我是驴友-黔东南旅游攻略.pdf (19.2 MB)
+2026-05-11T18:18:55.937+08:00  WARN 19232 --- [ai-travel-guide] [onPool-worker-1] o.a.pdfbox.pdmodel.font.PDCIDFontType2   : Using fallback font DengXian for CID-keyed TrueType font Î¢ÈíÑÅºÚ
+2026-05-11T18:18:56.179+08:00 DEBUG 19232 --- [ai-travel-guide] [onPool-worker-1] com.travel.service.RagService            : [RAG] embedding 维度: 1024
+2026-05-11T18:18:56.829+08:00 ERROR 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] FAIL: 我是驴友-黔东南旅游攻略.pdf - INVALID_ARGUMENT: Vector dimension 1024 does not match the dimension of the index 1536
+2026-05-11T18:18:56.829+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] scanning region: 贵州地区
+2026-05-11T18:18:56.830+08:00  INFO 19232 --- [ai-travel-guide] [onPool-worker-1] c.t.config.KnowledgeBaseInitializer      : [KB] done: total=57 ok=0 skip=0 fail=57 ms=77814
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:40 min
+[INFO] Finished at: 2026-05-11T18:22:12+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.5:run (default-cli) on project ai-travel-guide: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

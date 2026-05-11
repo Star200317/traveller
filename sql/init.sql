@@ -99,6 +99,31 @@ CREATE TABLE IF NOT EXISTS `travel_day` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='每日行程表';
 
 -- ------------------------------------------------------------
+-- 行程明细表（每行表格 = 一条记录，含经纬度供地图直接查询）
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `plan_item` (
+    `id`            BIGINT       NOT NULL COMMENT '明细ID（雪花）',
+    `plan_id`       BIGINT       NOT NULL COMMENT '关联计划ID',
+    `day_index`     INT          NOT NULL COMMENT '第几天（1-based）',
+    `item_type`     VARCHAR(20)  NOT NULL COMMENT '类型：attraction景点/meal餐食/hotel酒店',
+    `item_order`    INT          NOT NULL DEFAULT 0 COMMENT '当天排序序号（按时间顺序）',
+    `name`          VARCHAR(200) NOT NULL COMMENT '名称（景点名/店名/酒店名）',
+    `time_slot`     VARCHAR(50)  DEFAULT NULL COMMENT '时间段，如 07:30-08:30',
+    `cost`          VARCHAR(50)  DEFAULT NULL COMMENT '花费，如 30元/人、免费、成人50元',
+    `address`       VARCHAR(500) DEFAULT NULL COMMENT '精确地址（门牌号级别）',
+    `description`   TEXT         DEFAULT NULL COMMENT '简介/推荐语',
+    `latitude`      DOUBLE       DEFAULT NULL COMMENT '纬度（高德地图坐标系）',
+    `longitude`     DOUBLE       DEFAULT NULL COMMENT '经度（高德地图坐标系）',
+    `extra_info`    JSON         DEFAULT NULL COMMENT '扩展信息（ticket/price/recommendation等）',
+    `deleted`       TINYINT      NOT NULL DEFAULT 0,
+    `create_time`   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY `idx_plan_id` (`plan_id`),
+    KEY `idx_plan_day` (`plan_id`, `day_index`),
+    KEY `idx_plan_type` (`plan_id`, `day_index`, `item_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='行程明细表（结构化存储每行行程项）';
+
+-- ------------------------------------------------------------
 -- 知识库文档索引表（RAG文档管理）
 -- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `knowledge_doc` (

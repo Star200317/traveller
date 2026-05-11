@@ -2,6 +2,7 @@ package com.travel.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.travel.common.Result;
+import com.travel.dto.UserProfileRequest;
 import com.travel.entity.User;
 import com.travel.mapper.UserMapper;
 import com.travel.dto.LoginRequest;
@@ -69,6 +70,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         resp.setUsername(user.getUsername());
         resp.setNickname(user.getNickname());
         resp.setAvatar(user.getAvatar());
+        resp.setEmail(user.getEmail());
         return resp;
     }
 
@@ -116,5 +118,55 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         updateById(user);
 
         log.info("[UserService] 密码重置成功，username={}", username);
+    }
+
+    /**
+     * 更新用户资料
+     */
+    public User updateProfile(UserProfileRequest req) {
+        User user = getCurrentUser();
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+        if (req.getUsername() != null && !req.getUsername().isEmpty()) {
+            user.setUsername(req.getUsername());
+        }
+        if (req.getEmail() != null) {
+            user.setEmail(req.getEmail());
+        }
+
+        if (req.getAvatar() != null) {
+            user.setAvatar(req.getAvatar());
+        }
+        updateById(user);
+        log.info("[UserService] 用户资料更新成功，userId={}", user.getId());
+        return user;
+    }
+
+    /**
+     * 修改密码
+     */
+    public void changePassword(String oldPassword, String newPassword) {
+        User user = getCurrentUser();
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+        // 验证旧密码
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new RuntimeException("原密码错误");
+        }
+        user.setPassword(passwordEncoder.encode(newPassword));
+        updateById(user);
+        log.info("[UserService] 密码修改成功，userId={}", user.getId());
+    }
+
+    /**
+     * 删除账号
+     */
+    public void deleteAccount() {
+        Long userId = StpUtil.getLoginIdAsLong();
+        removeById(userId);
+        StpUtil.logout();
+        log.info("[UserService] 账号已删除，userId={}", userId);
     }
 }

@@ -1,17 +1,16 @@
 package com.travel.controller;
 
-import cn.dev33.satoken.stp.StpUtil;
 import com.travel.common.Result;
+import com.travel.dto.PlanSaveDTO;
+import com.travel.entity.PlanItem;
 import com.travel.entity.TravelPlan;
-import com.travel.service.PdfExportService;
 import com.travel.service.TravelPlanService;
-import jakarta.servlet.http.HttpServletResponse;
+import cn.dev33.satoken.stp.StpUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.*;
-import java.nio.file.Files;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/plan")
@@ -19,78 +18,78 @@ import java.util.List;
 public class TravelPlanController {
 
     private final TravelPlanService travelPlanService;
-    private final PdfExportService pdfExportService;
 
-    @GetMapping("/list")
-    public Result<List<TravelPlan>> list() {
-        Long userId = StpUtil.getLoginIdAsLong();
-        // 按创建时间倒序，过滤已删除，确保最新计划在前
-        return Result.success(travelPlanService.lambdaQuery()
-            .eq(TravelPlan::getUserId, userId)
-            .eq(TravelPlan::getDeleted, 0)
-            .orderByDesc(TravelPlan::getCreateTime)
-            .list());
+    /**
+     * 创建新计划
+     */
+    @PostMapping("/create")
+    public Result<TravelPlan> createPlan(@RequestBody TravelPlan plan) {
+        plan.setUserId(StpUtil.getLoginIdAsLong());
+        travelPlanService.save(plan);
+        return Result.success(plan);
     }
 
     /**
-     * 通过对话ID查询关联的计划（地图页跳转用）
+     * 获取当前用户的计划列表
      */
-    @GetMapping("/byConv/{convId}")
-    public Result<TravelPlan> getByConvId(@PathVariable Long convId) {
-        TravelPlan plan = travelPlanService.lambdaQuery()
-            .eq(TravelPlan::getConversationId, convId)
-            .one();
-        return Result.success(plan);
+    @GetMapping("/list")
+    public Result<List<TravelPlan>> getPlanList() {
+        Long userId = StpUtil.getLoginIdAsLong();
+        return Result.success(travelPlanService.getPlansByUserId(userId));
     }
 
-    @GetMapping("/{planId}")
-    public Result<TravelPlan> detail(@PathVariable Long planId) {
-        TravelPlan plan = travelPlanService.getById(planId);
-        if (plan != null) {
-            System.out.println("[PlanController] 查询planId=" + planId + ", mapData=" + (plan.getMapData() != null ? "存在" : "null"));
-        }
-        return Result.success(plan);
-    }
-
-    @DeleteMapping("/{planId}")
-    public Result<Void> delete(@PathVariable Long planId) {
-        travelPlanService.deletePlan(planId);
+    /**
+     * 更新计划
+     */
+    @PutMapping("/{planId}")
+    public Result<Void> updatePlan(@PathVariable Long planId, @RequestBody TravelPlan plan) {
+        plan.setId(planId);
+        travelPlanService.updateById(plan);
         return Result.success();
     }
 
     /**
-     * 获取地图数据（前端渲染高德地图）
+     * 保存计划（包含计划信息和地点项，合并新建/更新）
+     * 根据 dto.id 是否为 null 判断是新建还是更新
      */
-    @GetMapping("/{planId}/map")
-    public Result<Object> getMapData(@PathVariable Long planId) {
+    @PostMapping("/save")
+    public Result<TravelPlan> savePlan(@RequestBody PlanSaveDTO dto) {
+        TravelPlan plan = travelPlanService.savePlanWithItems(dto);
+        return Result.success(plan);
+    }
+
+    /**
+     * 获取计划详情（DTO格式，含地点项及 place 信息）
+     */
+    @GetMapping("/{planId}/dto")
+    public Result<PlanSaveDTO> getPlanDTO(@PathVariable Long planId) {
+        PlanSaveDTO dto = travelPlanService.getPlanSaveDTO(planId);
+        return Result.success(dto);
+    }
+
+    /**
+     * 新增单个计划项（废弃，使用 /{planId}/items 代替）
+     * 原实现有问题：一个方法不能有两个 @RequestBody 参数
+     */
+
+    /**
+     * 获取计划详情
+     */
+    @GetMapping("/{planId}/detail")
+    public Result<TravelPlan> getPlanDetail(@PathVariable Long planId) {
         TravelPlan plan = travelPlanService.getById(planId);
-        return Result.success(plan.getMapData());
+        if (plan == null) {
+            return Result.error("计划不存在");
+        }
+        return Result.success(plan);
     }
 
     /**
-     * 导出PDF
+     * 删除计划（逻辑删除）
      */
-    @PostMapping("/{planId}/pdf/export")
-    public Result<String> exportPdf(@PathVariable Long planId) throws Exception {
-        pdfExportService.exportPlan(planId);
-        return Result.success("/api/plan/" + planId + "/pdf/download");
-    }
-
-    /**
-     * 下载PDF
-     */
-    @GetMapping("/{planId}/pdf/download")
-    public void downloadPdf(@PathVariable Long planId, HttpServletResponse response) throws Exception {
-        String filePath = pdfExportService.getPdfFilePath(planId);
-        File file = new File(filePath);
-        if (!file.exists()) {
-            pdfExportService.exportPlan(planId);
-        }
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "attachment; filename=travel-plan-" + planId + ".pdf");
-        try (InputStream is = new FileInputStream(file);
-             OutputStream os = response.getOutputStream()) {
-            is.transferTo(os);
-        }
+    @DeleteMapping("/{planId}")
+    public Result<Void> deletePlan(@PathVariable Long planId) {
+        travelPlanService.deletePlanLogically(planId);
+        return Result.success();
     }
 }

@@ -33,4 +33,8 @@ public class Result<T> {
         r.setMessage(message);
         return r;
     }
+
+    public static <T> Result<T> error(String message) {
+        return fail(500, message);
+    }
 }
