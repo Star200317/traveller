@@ -4,11 +4,17 @@ import com.travel.common.Result;
 import com.travel.dto.PlanSaveDTO;
 import com.travel.entity.PlanItem;
 import com.travel.entity.TravelPlan;
+import com.travel.service.PdfExportService;
 import com.travel.service.TravelPlanService;
 import cn.dev33.satoken.stp.StpUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +24,7 @@ import java.util.Map;
 public class TravelPlanController {
 
     private final TravelPlanService travelPlanService;
+    private final PdfExportService pdfExportService;
 
     /**
      * 创建新计划
@@ -91,5 +98,25 @@ public class TravelPlanController {
     public Result<Void> deletePlan(@PathVariable Long planId) {
         travelPlanService.deletePlanLogically(planId);
         return Result.success();
+    }
+
+    /**
+     * 导出计划为 PDF
+     */
+    @GetMapping("/{planId}/export/pdf")
+    public ResponseEntity<byte[]> exportPdf(@PathVariable Long planId) throws Exception {
+        PlanSaveDTO dto = travelPlanService.getPlanSaveDTO(planId);
+
+        byte[] pdfBytes = pdfExportService.exportPlan(dto);
+
+        String fileName = URLEncoder.encode(
+                (dto.getTitle() != null ? dto.getTitle() : "旅游计划") + ".pdf",
+                StandardCharsets.UTF_8
+        );
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdfBytes);
     }
 }
