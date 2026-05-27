@@ -14,9 +14,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Markdown知识库启动初始化器
@@ -44,6 +47,16 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
     @Value("${knowledge-base.reindex-if-exists:false}")
     private boolean reindexIfExists;
 
+    // 未向量化文件路径（扫描源）
+    private Path getPendingPath() {
+        return Paths.get(markdownKnowledgeBasePath, "未向量化");
+    }
+
+    // 已向量化文件路径（移动目标）
+    private Path getIndexedPath() {
+        return Paths.get(markdownKnowledgeBasePath, "已向量化");
+    }
+
     /** Pinecone 索引重试配置 */
     private static final int INDEX_MAX_RETRIES = 3;
     private static final long INDEX_RETRY_BASE_DELAY_MS = 2000;
@@ -59,21 +72,27 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
 
     private void doIndex() {
         try {
-            Path basePath = Paths.get(markdownKnowledgeBasePath);
-            if (!Files.exists(basePath)) {
-                log.warn("[KB-MD] path not found: {}, will create", markdownKnowledgeBasePath);
-                Files.createDirectories(basePath);
-                return;
+            Path pendingPath = getPendingPath();
+            Path indexedPath = getIndexedPath();
+
+            // 创建目录（如果不存在）
+            if (!Files.exists(pendingPath)) {
+                log.warn("[KB-MD] pending path not found: {}, will create", pendingPath);
+                Files.createDirectories(pendingPath);
+            }
+            if (!Files.exists(indexedPath)) {
+                log.warn("[KB-MD] indexed path not found: {}, will create", indexedPath);
+                Files.createDirectories(indexedPath);
             }
 
-            log.info("[KB-MD] starting scan: {}", markdownKnowledgeBasePath);
+            log.info("[KB-MD] starting scan: {}", pendingPath);
             long t0 = System.currentTimeMillis();
             int total = 0, ok = 0, skip = 0, fail = 0;
 
             // 扫描所有.md文件（包括子目录）
             List<Path> mdFiles;
             try {
-                mdFiles = Files.walk(basePath)
+                mdFiles = Files.walk(pendingPath)
                         .filter(Files::isRegularFile)
                         .filter(p -> p.toString().toLowerCase().endsWith(".md"))
                         .toList();
@@ -83,7 +102,7 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
             }
 
             if (mdFiles.isEmpty()) {
-                log.info("[KB-MD] no .md files found in {}", markdownKnowledgeBasePath);
+                log.info("[KB-MD] no .md files found in {}", pendingPath);
                 return;
             }
 
@@ -94,6 +113,8 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
                 try {
                     if (indexMarkdown(mdPath)) {
                         ok++;
+                        // 向量化成功后，移动到"已向量化"目录
+                        moveToIndexed(mdPath, indexedPath);
                     } else {
                         skip++;
                     }
@@ -113,22 +134,11 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
 
     /**
      * 处理单个Markdown文件
+     * 按章节拆分为多个文档分别索引
      * @return true=已处理, false=已存在跳过
      */
     private boolean indexMarkdown(Path mdPath) throws Exception {
         String fileName = mdPath.getFileName().toString();
-
-        // 去重检查：按fileName查询是否已存在
-        if (!reindexIfExists) {
-            List<KnowledgeDoc> existing = ragService.lambdaQuery()
-                    .eq(KnowledgeDoc::getFileName, fileName)
-                    .eq(KnowledgeDoc::getDeleted, 0)
-                    .list();
-            if (!existing.isEmpty()) {
-                log.debug("[KB-MD] skip existing: {}", fileName);
-                return false;
-            }
-        }
 
         log.info("[KB-MD] parsing: {} ({})", fileName, formatSize(Files.size(mdPath)));
 
@@ -141,14 +151,108 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
         }
 
         String cleaned = cleanMarkdown(content);
-        String category = detectCategory(fileName, cleaned);
-        String title = buildTitle(fileName, mdPath);
+        String baseTitle = buildTitle(fileName, mdPath);
+        
+        // 按章节拆分文档
+        List<DocSection> sections = splitDocumentBySections(cleaned, fileName);
+        
+        if (sections.isEmpty()) {
+            // 没有识别到章节，按原方式处理（归类为city）
+            log.warn("[KB-MD] no sections found in {}, indexing as city", fileName);
+            return indexAsSingleDocument(fileName, baseTitle, cleaned, mdPath);
+        }
+        
+        log.info("[KB-MD] split {} into {} sections", fileName, sections.size());
+        
+        // 为每个章节创建独立的KnowledgeDoc
+        boolean anySuccess = false;
+        for (DocSection section : sections) {
+            try {
+                if (indexSectionDocument(section, baseTitle, fileName)) {
+                    anySuccess = true;
+                }
+            } catch (Exception e) {
+                log.error("[KB-MD] failed to index section: {} - {}", 
+                    section.title, e.getMessage(), e);
+            }
+        }
+        
+        return anySuccess;
+    }
+    
+    /**
+     * 索引单个章节文档
+     */
+    private boolean indexSectionDocument(DocSection section, String baseTitle, String sourceFileName) {
+        // 生成唯一标识：原文件名#category#章节标题
+        String uniqueKey = sourceFileName + "#" + section.category + "#" + section.title;
+        
+        // 去重检查
+        if (!reindexIfExists) {
+            List<KnowledgeDoc> existing = ragService.lambdaQuery()
+                    .eq(KnowledgeDoc::getFileName, uniqueKey)
+                    .eq(KnowledgeDoc::getDeleted, 0)
+                    .list();
+            if (!existing.isEmpty()) {
+                log.debug("[KB-MD] skip existing section: {}", uniqueKey);
+                return false;
+            }
+        }
+        
+        // 创建KnowledgeDoc
+        KnowledgeDoc kd = new KnowledgeDoc();
+        kd.setUserId(null);  // null=公共库
+        kd.setCategory(section.category);
+        kd.setTitle(baseTitle + "-" + section.title);  // 如"北京-美食"
+        kd.setContent(section.content);
+        kd.setFileName(uniqueKey);  // 唯一标识
+        kd.setFileSize((long) section.content.length());
+        kd.setStatus(0);
+        kd.setDeleted(0);
+        kd.setCreateTime(LocalDateTime.now());
+        kd.setUpdateTime(LocalDateTime.now());
+        
+        // 保存到数据库
+        ragService.save(kd);
+        log.info("[KB-MD] saved section: [{}] {}", kd.getId(), kd.getTitle());
+        
+        // 向量化并存入Pinecone（带重试）
+        try {
+            indexDocumentWithRetry(kd);
+            log.info("[KB-MD] indexed section: [{}] {} cat={}", 
+                kd.getId(), kd.getTitle(), section.category);
+        } catch (Exception e) {
+            log.error("[KB-MD] failed to index section: {} - {}", 
+                kd.getTitle(), e.getMessage(), e);
+            // 索引失败不改变返回结果，因为数据库记录已保存
+        }
+        
+        return true;
+    }
+    
+    /**
+     * 按原方式索引单个文档（兼容未拆分文档）
+     */
+    private boolean indexAsSingleDocument(String fileName, String title, String content, Path mdPath) throws Exception {
+        // 去重检查
+        if (!reindexIfExists) {
+            List<KnowledgeDoc> existing = ragService.lambdaQuery()
+                    .eq(KnowledgeDoc::getFileName, fileName)
+                    .eq(KnowledgeDoc::getDeleted, 0)
+                    .list();
+            if (!existing.isEmpty()) {
+                log.debug("[KB-MD] skip existing: {}", fileName);
+                return false;
+            }
+        }
+
+        String category = detectCategory(fileName, content);
 
         KnowledgeDoc kd = new KnowledgeDoc();
-        kd.setUserId(null);           // null=公共库
+        kd.setUserId(null);
         kd.setCategory(category);
         kd.setTitle(title);
-        kd.setContent(cleaned);
+        kd.setContent(content);
         kd.setFileName(fileName);
         kd.setFileSize(Files.size(mdPath));
         kd.setStatus(0);
@@ -156,11 +260,9 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
         kd.setCreateTime(LocalDateTime.now());
         kd.setUpdateTime(LocalDateTime.now());
 
-        // 必须先 save，否则 getId() 为 null
         ragService.save(kd);
         log.info("[KB-MD] saved: [{}] {}", kd.getId(), title);
 
-        // 向量化并存入Pinecone（带重试）
         indexDocumentWithRetry(kd);
         log.info("[KB-MD] indexed: [{}] {} cat={}", kd.getId(), title, category);
         return true;
@@ -268,17 +370,112 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
     /**
      * 检测文档分类
      * 根据文件名和内容判断是景点/城市/旅行常识
+     * 支持章节拆分后的文档（文件名包含#）
      */
     private String detectCategory(String fileName, String content) {
         String lower = fileName.toLowerCase();
+        
+        // 检查是否是章节拆分后的文档（文件名格式：原文件名#category#sectionTitle）
+        if (fileName.contains("#")) {
+            String[] parts = fileName.split("#");
+            if (parts.length >= 2) {
+                return parts[1];  // 返回category部分
+            }
+        }
+        
+        // 旧逻辑（兼容未拆分文档）
         String contentLower = content.toLowerCase();
-
         if (lower.contains("景点") || contentLower.contains("## 景点")) return "attraction";
-        if (lower.contains("美食") || lower.contains("餐厅") || contentLower.contains("## 美食")) return "city";
-        if (lower.contains("住宿") || contentLower.contains("酒店") || contentLower.contains("## 住宿")) return "city";
+        if (lower.contains("美食") || lower.contains("餐厅") || contentLower.contains("## 美食")) return "food";
+        if (lower.contains("住宿") || contentLower.contains("酒店") || contentLower.contains("## 住宿")) return "hotel";
 
         // 默认归类为城市知识库
         return "city";
+    }
+    
+    /**
+     * 按章节拆分文档
+     * 根据 ## 标题将文档拆分为多个章节
+     * @param content 原始文档内容
+     * @param fileName 文件名
+     * @return 拆分后的章节列表
+     */
+    private List<DocSection> splitDocumentBySections(String content, String fileName) {
+        List<DocSection> sections = new ArrayList<>();
+        
+        // 定义章节映射关系（章节关键词 -> category）
+        Map<String, String> sectionCategoryMap = new HashMap<>();
+        sectionCategoryMap.put("景点", "attraction");
+        sectionCategoryMap.put("美食", "food");
+        sectionCategoryMap.put("餐厅", "food");
+        sectionCategoryMap.put("小吃", "food");
+        sectionCategoryMap.put("住宿", "hotel");
+        sectionCategoryMap.put("酒店", "hotel");
+        sectionCategoryMap.put("民宿", "hotel");
+        sectionCategoryMap.put("客栈", "hotel");
+        sectionCategoryMap.put("旅社", "hotel");
+        
+        // 使用正则表达式匹配 ## 标题
+        Pattern pattern = Pattern.compile("(?m)^##\\s+(.+)$");
+        Matcher matcher = pattern.matcher(content);
+        
+        int lastEnd = 0;
+        String lastTitle = null;
+        
+        while (matcher.find()) {
+            // 保存上一个章节的内容
+            if (lastTitle != null) {
+                String sectionContent = content.substring(lastEnd, matcher.start()).trim();
+                String category = detectSectionCategory(lastTitle, sectionCategoryMap);
+                if (category != null) {
+                    sections.add(new DocSection(category, lastTitle, sectionContent, fileName));
+                }
+            }
+            
+            lastTitle = matcher.group(1).trim();
+            lastEnd = matcher.end();
+        }
+        
+        // 保存最后一个章节
+        if (lastTitle != null && lastEnd < content.length()) {
+            String sectionContent = content.substring(lastEnd).trim();
+            String category = detectSectionCategory(lastTitle, sectionCategoryMap);
+            if (category != null) {
+                sections.add(new DocSection(category, lastTitle, sectionContent, fileName));
+            }
+        }
+        
+        return sections;
+    }
+    
+    /**
+     * 检测章节分类
+     */
+    private String detectSectionCategory(String title, Map<String, String> categoryMap) {
+        String lowerTitle = title.toLowerCase();
+        for (Map.Entry<String, String> entry : categoryMap.entrySet()) {
+            if (lowerTitle.contains(entry.getKey().toLowerCase())) {
+                return entry.getValue();
+            }
+        }
+        return null;  // 未识别的章节不处理
+    }
+    
+    /**
+     * 文档章节内部类
+     */
+    private static class DocSection {
+        String category;
+        String title;
+        String content;
+        String sourceFile;
+        
+        DocSection(String category, String title, String content, String sourceFile) {
+            this.category = category;
+            this.title = title;
+            this.content = content;
+            this.sourceFile = sourceFile;
+        }
     }
 
     /**
@@ -301,5 +498,30 @@ public class MarkdownKnowledgeBaseInitializer implements CommandLineRunner {
         if (bytes < 1024) return bytes + " B";
         if (bytes < 1024 * 1024) return String.format("%.1f KB", bytes / 1024.0);
         return String.format("%.1f MB", bytes / (1024.0 * 1024.0));
+    }
+
+    /**
+     * 将文件移动到"已向量化"目录
+     * 保持原有的子目录结构
+     */
+    private void moveToIndexed(Path sourcePath, Path indexedPath) {
+        try {
+            // 计算相对路径（保留子目录结构）
+            Path pendingPath = getPendingPath();
+            Path relativePath = pendingPath.relativize(sourcePath);
+            Path targetPath = indexedPath.resolve(relativePath);
+
+            // 创建目标目录（如果不存在）
+            Path targetDir = targetPath.getParent();
+            if (targetDir != null && !Files.exists(targetDir)) {
+                Files.createDirectories(targetDir);
+            }
+
+            // 移动文件
+            Files.move(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+            log.info("[KB-MD] moved to indexed: {} -> {}", sourcePath.getFileName(), targetPath);
+        } catch (Exception e) {
+            log.warn("[KB-MD] failed to move file to indexed: {} - {}", sourcePath.getFileName(), e.getMessage());
+        }
     }
 }

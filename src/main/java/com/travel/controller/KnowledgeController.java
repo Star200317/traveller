@@ -19,6 +19,26 @@ public class KnowledgeController {
     private final RagService ragService;
 
     /**
+     * 获取用户私有知识库列表
+     */
+    @GetMapping("/user/list")
+    public Result<List<KnowledgeDoc>> userDocList() {
+        Long userId = StpUtil.getLoginIdAsLong();
+        return Result.success(ragService.lambdaQuery()
+                .eq(KnowledgeDoc::getUserId, userId).list());
+    }
+
+    /**
+     * 删除文档
+     */
+    @DeleteMapping("/{docId}")
+    public Result<Void> deleteDoc(@PathVariable Long docId) {
+        KnowledgeDoc doc = ragService.getById(docId);
+        ragService.deleteDocument(doc);
+        ragService.removeById(docId);
+        return Result.success();
+    }
+    /**
      * 上传文档到公共知识库（管理员用）
      */
     @PostMapping("/admin/upload")
@@ -61,24 +81,5 @@ public class KnowledgeController {
         return Result.success(doc);
     }
 
-    /**
-     * 获取用户私有知识库列表
-     */
-    @GetMapping("/user/list")
-    public Result<List<KnowledgeDoc>> userDocList() {
-        Long userId = StpUtil.getLoginIdAsLong();
-        return Result.success(ragService.lambdaQuery()
-                .eq(KnowledgeDoc::getUserId, userId).list());
-    }
 
-    /**
-     * 删除文档
-     */
-    @DeleteMapping("/{docId}")
-    public Result<Void> deleteDoc(@PathVariable Long docId) {
-        KnowledgeDoc doc = ragService.getById(docId);
-        ragService.deleteDocument(doc);
-        ragService.removeById(docId);
-        return Result.success();
-    }
 }

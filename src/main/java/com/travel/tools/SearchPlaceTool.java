@@ -26,21 +26,23 @@ public class SearchPlaceTool {
 
     private final PlaceMapper placeMapper;
 
-    @Tool(description = """
+    @Tool(name = "search_place", description = """
             从本地地点库查询景点、酒店、餐厅信息。
-            必须在生成旅游计划之前调用此工具获取地点数据！
-            
-            调用时机：用户提出旅游目的地需求后，生成行程计划之前。
-            
+
+            调用时机：
+            - 用户触发规划（说"帮我规划"、"给我个行程"等）
+            - 需要获取已验证的地点数据（避免AI编造）
+
             参数说明：
             - city: 目标城市（必填），如"厦门"、"大理"
             - type: 地点类型（必填），可选值：
               * attraction - 景点
               * hotel - 酒店
               * restaurant - 餐厅/美食
-            
-            返回格式：JSON数组，包含地点名称、详细地址、坐标、价格等信息
-            如果查询结果为空，说明本地地点库暂无该类型数据，请联网搜索补充。
+
+            返回格式：包含地点名称、详细地址、坐标、价格等信息的结构化数据
+
+            如果查询结果为空 → 必须调用 overpass_query 或 web_search 补充！
             """)
     public String searchPlaces(
             @ToolParam(description = "目标城市，如'厦门'") String city,

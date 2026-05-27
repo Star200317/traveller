@@ -1,12 +1,12 @@
 package com.travel.controller;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.travel.common.Result;
 import com.travel.dto.PlanSaveDTO;
-import com.travel.entity.PlanItem;
 import com.travel.entity.TravelPlan;
+import com.travel.service.AmapService;
 import com.travel.service.PdfExportService;
 import com.travel.service.TravelPlanService;
-import cn.dev33.satoken.stp.StpUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -25,10 +25,8 @@ public class TravelPlanController {
 
     private final TravelPlanService travelPlanService;
     private final PdfExportService pdfExportService;
+    private final AmapService amapService;
 
-    /**
-     * 创建新计划
-     */
     @PostMapping("/create")
     public Result<TravelPlan> createPlan(@RequestBody TravelPlan plan) {
         plan.setUserId(StpUtil.getLoginIdAsLong());
@@ -36,18 +34,12 @@ public class TravelPlanController {
         return Result.success(plan);
     }
 
-    /**
-     * 获取当前用户的计划列表
-     */
     @GetMapping("/list")
     public Result<List<TravelPlan>> getPlanList() {
         Long userId = StpUtil.getLoginIdAsLong();
         return Result.success(travelPlanService.getPlansByUserId(userId));
     }
 
-    /**
-     * 更新计划
-     */
     @PutMapping("/{planId}")
     public Result<Void> updatePlan(@PathVariable Long planId, @RequestBody TravelPlan plan) {
         plan.setId(planId);
@@ -55,33 +47,57 @@ public class TravelPlanController {
         return Result.success();
     }
 
-    /**
-     * 保存计划（包含计划信息和地点项，合并新建/更新）
-     * 根据 dto.id 是否为 null 判断是新建还是更新
-     */
     @PostMapping("/save")
     public Result<TravelPlan> savePlan(@RequestBody PlanSaveDTO dto) {
         TravelPlan plan = travelPlanService.savePlanWithItems(dto);
         return Result.success(plan);
     }
 
-    /**
-     * 获取计划详情（DTO格式，含地点项及 place 信息）
-     */
     @GetMapping("/{planId}/dto")
     public Result<PlanSaveDTO> getPlanDTO(@PathVariable Long planId) {
         PlanSaveDTO dto = travelPlanService.getPlanSaveDTO(planId);
         return Result.success(dto);
     }
 
-    /**
-     * 新增单个计划项（废弃，使用 /{planId}/items 代替）
-     * 原实现有问题：一个方法不能有两个 @RequestBody 参数
-     */
+    @GetMapping("/{planId}")
+    public Result<TravelPlan> getPlan(@PathVariable Long planId) {
+        TravelPlan plan = travelPlanService.getById(planId);
+        if (plan == null) {
+            return Result.error("计划不存在");
+        }
+        return Result.success(plan);
+    }
 
-    /**
-     * 获取计划详情
-     */
+    @GetMapping("/byConv/{conversationId}")
+    public Result<TravelPlan> getPlanByConversation(@PathVariable Long conversationId) {
+        TravelPlan plan = travelPlanService.getLatestPlanByUserId(StpUtil.getLoginIdAsLong());
+        if (plan == null) {
+            return Result.error("未找到可用计划");
+        }
+        return Result.success(plan);
+    }
+
+    @PostMapping("/route/driving")
+    public Result<Map<String, Object>> planDrivingRoute(@RequestBody Map<String, Object> body) {
+        Object pointsObj = body.get("points");
+        if (!(pointsObj instanceof List<?> rawPoints) || rawPoints.size() < 2) {
+            return Result.error("至少需要两个坐标点");
+        }
+
+        List<Map<String, Object>> normalizedPoints = rawPoints.stream()
+                .filter(Map.class::isInstance)
+                .map(point -> {
+                    Map<?, ?> rawMap = (Map<?, ?>) point;
+                    Map<String, Object> normalized = new java.util.HashMap<>();
+                    rawMap.forEach((key, value) -> normalized.put(String.valueOf(key), value));
+                    return normalized;
+                })
+                .toList();
+
+        List<Map<String, Object>> segments = amapService.planRoutes(normalizedPoints);
+        return Result.success(Map.of("segments", segments));
+    }
+
     @GetMapping("/{planId}/detail")
     public Result<TravelPlan> getPlanDetail(@PathVariable Long planId) {
         TravelPlan plan = travelPlanService.getById(planId);
@@ -91,24 +107,16 @@ public class TravelPlanController {
         return Result.success(plan);
     }
 
-    /**
-     * 删除计划（逻辑删除）
-     */
     @DeleteMapping("/{planId}")
     public Result<Void> deletePlan(@PathVariable Long planId) {
         travelPlanService.deletePlanLogically(planId);
         return Result.success();
     }
 
-    /**
-     * 导出计划为 PDF
-     */
     @GetMapping("/{planId}/export/pdf")
     public ResponseEntity<byte[]> exportPdf(@PathVariable Long planId) throws Exception {
         PlanSaveDTO dto = travelPlanService.getPlanSaveDTO(planId);
-
         byte[] pdfBytes = pdfExportService.exportPlan(dto);
-
         String fileName = URLEncoder.encode(
                 (dto.getTitle() != null ? dto.getTitle() : "旅游计划") + ".pdf",
                 StandardCharsets.UTF_8

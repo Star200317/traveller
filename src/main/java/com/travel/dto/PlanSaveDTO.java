@@ -34,8 +34,14 @@ public class PlanSaveDTO {
 
     /**
      * 行程地点项列表
-     * 每项包含：placeId, dayDate, notes, duration
+     * 每项包含：placeId, dayDate, notes, duration, sortOrder
      */
     private List<Map<String, Object>> items;
+
+    /**
+     * 行程日期列表
+     * 每项包含：date, label
+     */
+    private List<Map<String, Object>> days;
 
 }

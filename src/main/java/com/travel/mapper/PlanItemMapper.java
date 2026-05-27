@@ -19,7 +19,7 @@ public interface PlanItemMapper extends BaseMapper<PlanItem> {
     /**
      * 根据计划ID查询所有计划项，按 day_date 和 sortOrder 排序
      */
-    @Select("SELECT * FROM plan_item WHERE plan_id = #{planId} ORDER BY day_date ASC, sort_order ASC")
+    @Select("SELECT * FROM plan_item WHERE plan_id = #{planId} ORDER BY (day_date IS NULL) ASC, day_date ASC, sort_order ASC, id ASC")
     List<PlanItem> selectByPlanId(@Param("planId") Long planId);
 
     /**
@@ -39,7 +39,7 @@ public interface PlanItemMapper extends BaseMapper<PlanItem> {
             FROM plan_item pi
             LEFT JOIN place p ON pi.place_id = p.id
             WHERE pi.plan_id = #{planId}
-            ORDER BY pi.day_date ASC, pi.sort_order ASC
+            ORDER BY (pi.day_date IS NULL) ASC, pi.day_date ASC, pi.sort_order ASC, pi.id ASC
             """)
     List<Map<String, Object>> selectWithPlaceByPlanId(@Param("planId") Long planId);
 }

@@ -41,7 +41,27 @@ public class WebSearchTool {
             .build();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @Tool(description = "联网搜索最新旅游信息，包括景点详情、交通、住宿、天气、门票价格等实时信息")
+    @Tool(name = "web_search", description = """
+            联网搜索最新旅游信息（Google Search API via Serper）。
+
+            【重要】这是知识库查询失败后的降级方案！
+
+            调用时机（按优先级）：
+            1. 【必须】enhanced_rag_query 返回"知识库中暂无相关信息" → 立即调用此工具
+            2. 查询实时信息：票价、开放时间、最新政策、天气预警
+            3. 知识库信息不完整/过时 → 用此工具补充
+
+            绝对禁止：
+            - ❌ 不先查知识库就直接调用此工具
+            - ❌ 知识库有信息时还调用此工具
+
+            参数：
+            - query: 搜索关键词（必填），要具体明确
+              ✅ 正确："大理古城门票价格2024"
+              ❌ 错误："大理"
+
+            返回：每条结果包含标题、摘要、链接
+            """)
     public String webSearch(
             @ToolParam(description = "搜索关键词，如'北京故宫门票价格2024'") String query) {
         try {

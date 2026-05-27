@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-/**
- * 用户控制器
- */
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -20,9 +17,16 @@ public class UserController {
 
     private final UserService userService;
 
-    /**
-     * 更新用户资料（头像、个人信息）
-     */
+    @GetMapping("/profile")
+    public Result<User> getProfile() {
+        User user = userService.getCurrentUser();
+        if (user == null) {
+            return Result.fail("用户不存在");
+        }
+        user.setPassword(null);
+        return Result.success(user);
+    }
+
     @PutMapping("/profile")
     public Result<User> updateProfile(@RequestBody UserProfileRequest req) {
         User user = userService.updateProfile(req);
@@ -30,18 +34,12 @@ public class UserController {
         return Result.success(user);
     }
 
-    /**
-     * 修改密码
-     */
     @PostMapping("/changePassword")
     public Result<Void> changePassword(@RequestBody Map<String, String> params) {
         userService.changePassword(params.get("oldPassword"), params.get("newPassword"));
         return Result.success(null);
     }
 
-    /**
-     * 删除账号
-     */
     @DeleteMapping("/account")
     public Result<Void> deleteAccount() {
         userService.deleteAccount();

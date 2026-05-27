@@ -23,8 +23,6 @@ public class TravelPlan {
     private String destination;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Integer status;  // 1=草稿，2=已确认，3=已导出PDF
-
 
     // 逻辑删除字段：0=未删除，1=已删除
     private Integer deleted;
